@@ -38,7 +38,7 @@ def main():
         print("1. Enter Sales Transaction")
         if user_type == 'manager':
             print("2. Add New Grocery Product")
-        print("3. Logout")
+        print("0. Logout")
 
         choice = input("Enter your choice: ")
 
@@ -48,7 +48,7 @@ def main():
         elif choice == "2" and user_type == 'manager':
             grocery.add_new_grocery(groceries) 
             
-        elif choice == "3":
+        elif choice == "0":
             print("Saving and logging out...")
             transaction.save_transactions(transaction_file, transactions)
             grocery.save_groceries(grocery_file, groceries)
