@@ -5,5 +5,5 @@ def authenticate_user(user_file, username, password):
         reader = csv.DictReader(file)
         for row in reader:
             if row['username'] == username and row['password'] == password:
-                return row['type']  # Return either 'cashier' or 'manager'
+                return row['type'] 
     return None
