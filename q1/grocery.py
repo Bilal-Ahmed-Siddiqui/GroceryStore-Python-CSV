@@ -1,6 +1,5 @@
 import csv
 
-# Load groceries from the grocery CSV file into a dictionary
 def load_groceries(grocery_file):
     groceries = {}
     with open(grocery_file, mode='r', encoding='utf-8-sig') as file:
@@ -13,7 +12,6 @@ def load_groceries(grocery_file):
             }
     return groceries
 
-# Save the groceries dictionary back to the CSV file
 def save_groceries(grocery_file, groceries):
     with open(grocery_file, mode='w',  encoding='utf-8-sig',newline='') as file:
         fieldnames = ['id', 'name', 'price', 'stock']
@@ -34,35 +32,33 @@ def add_new_grocery(groceries):
         name = input("Enter grocery name (or type 'exit' to cancel): ")
         if name.lower() == 'exit':
             print("Cancelled adding new grocery item.")
-            return  # Exit the function
+            return  
 
-        # Validate price input
         while True:
             price_input = input("Enter grocery price (must be a positive number, or type 'exit' to cancel): ")
             if price_input.lower() == 'exit':
                 print("Cancelled adding new grocery item.")
-                return  # Exit the function
+                return 
             try:
                 price = float(price_input)
                 if price <= 0:
                     print("Price must be a positive number. Please try again.")
                     continue
-                break  # Break out of the loop if the price is valid
+                break  
             except ValueError:
                 print("Invalid input. Please enter a valid number for the price.")
 
-        # Validate stock input
         while True:
             stock_input = input("Enter stock quantity (must be a non-negative integer, or type 'exit' to cancel): ")
             if stock_input.lower() == 'exit':
                 print("Cancelled adding new grocery item.")
-                return  # Exit the function
+                return  
             try:
                 stock = int(stock_input)
                 if stock < 0:
                     print("Stock quantity cannot be negative. Please try again.")
                     continue
-                break  # Break out of the loop if the stock is valid
+                break  
             except ValueError:
                 print("Invalid input. Please enter a valid integer for stock quantity.")
         
@@ -72,5 +68,5 @@ def add_new_grocery(groceries):
             'stock': stock
         }
         print(f"New grocery item '{name}' added successfully!")
-        break  # Exit the loop after successfully adding a new grocery item
+        break 
 

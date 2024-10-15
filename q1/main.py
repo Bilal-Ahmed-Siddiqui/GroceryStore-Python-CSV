@@ -1,33 +1,30 @@
-import auth  # Import the authentication module
-import grocery  # Import the grocery module
-import transaction  # Import the transaction module
+import auth  
+import grocery  
+import transaction  
 import sys
 
 def main():
-    # Path to the CSV files (you can replace these with command-line arguments later)
     user_file = 'users.csv'
 
     if len(sys.argv) != 3:
         print("Usage: python script.py <transaction_file> <grocery_file>")
-        sys.exit(1)  # Exit the program with an error code
+        sys.exit(1) 
 
     transaction_file = sys.argv[1]  # First argument for the transaction file
     grocery_file = sys.argv[2]  # Second argument for the grocery file
 
-    # Load grocery and transaction data
+
     groceries = grocery.load_groceries(grocery_file)
     transactions = transaction.load_transactions(transaction_file)
     
-    # Load grocery and transaction data
+
     groceries = grocery.load_groceries(grocery_file)
     transactions = transaction.load_transactions(transaction_file)
 
-    # User login process
     print("Welcome to the Grocery Store Management System!")
     username = input("Enter username: ")
     password = input("Enter password: ")
     
-    # Authenticate user
     user_type = auth.authenticate_user(user_file, username, password)
     
     if user_type is None:
@@ -35,8 +32,7 @@ def main():
         return
 
     print(f"Login successful. You are logged in as a {user_type}.")
-    
-    # Main loop after successful login
+
     while True:
         print("\nMain Menu:")
         print("1. Enter Sales Transaction")
